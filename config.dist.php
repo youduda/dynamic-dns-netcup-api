@@ -27,20 +27,21 @@ define('DOMAINLIST', 'myfirstdomain.com: server, dddns; myseconddomain.com: @, *
 // Enter subdomain to be used for dynamic DNS, alternatively '@' for domain root or '*' for wildcard. If the record doesn't exist, the script will create it.
 // define('HOST', 'server');
 
-
-// If set to true, the script will check for your public IPv4 address and add it as an A-Record / change an existing A-Record for the host.
-// You may want to deactivate this, for example, when using a carrier grade NAT (CGNAT).
-// Most likely though, you should keep this active, unless you know otherwise.
-define('USE_IPV4', true);
-
-// If set to true, the script will check for your public IPv6 address too and add it as an AAAA-Record / change an existing AAAA-Record for the host.
-// Activate this only if you have IPv6 connectivity, or you *WILL* get errors.
-define('USE_IPV6', false);
-
-
 // If set to true, this will change TTL to 300 seconds on every run if necessary.
 define('CHANGE_TTL', true);
 
 
 // Use netcup DNS REST-API.
 define('APIURL', 'https://ccp.netcup.net/run/webservice/servers/endpoint.php?JSON');
+
+// DynDNS API configuration options
+// The username for client authentication
+define('DYNDNS_USERNAME', 'username');
+
+// The password for client authentication. Set the sha512sum hash of the password.
+// To generate the hash of the default password 'secret' enter in your shell: echo -n 'secret' | sha512sum
+define('DYNDNS_PASSWORD_HASH', 'bd2b1aaf7ef4f09be9f52ce2d8d599674d81aa9d6a4421696dc4d93dd0619d682ce56b4d64a9ef097761ced99e0f67265b5f76085e5b0ee7ca4696b2ad6fe2b2');
+
+// Enter the domain expected from the dyndns client. This domain is not related to 'DOMAINLIST' above and will not be used
+// to determine which NetCup domain should be updated. This is only used during authentication and can therefore be an arbitrary value.
+define('DYNDNS_DOMAIN', 'example.com');

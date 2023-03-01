@@ -214,7 +214,7 @@ function outputStderr($message)
     $date = date("Y/m/d H:i:s O");
     $output = sprintf("[%s][ERROR] %s\n", $date, $message);
 
-    fwrite(STDERR, $output);
+    error_log($output);
 }
 
 //Returns list of domains with their subdomains for which we are supposed to perform changes
